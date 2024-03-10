@@ -65,7 +65,6 @@ export class News extends Component {
     this.setState({
       articles: this.state.articles.concat(parsedData.articles) ,
       totalResults: parsedData.totalResults,
-      loading: false,
     });
   }
 
