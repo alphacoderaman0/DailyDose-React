@@ -32,6 +32,7 @@ const News = (props) => {
   useEffect(() => {
     document.title = `${capitalizeLetter(props.category)} - DailyDose`;
     updateNews();
+    // eslint-disable-next-line
   }, []);
 
   const previous = async () => {
