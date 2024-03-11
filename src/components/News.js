@@ -1,147 +1,133 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroll-component";
 
-export class News extends Component {
-  static defaultProps = {
-    country: "in",
-    pageSize: 8,
-    category: "general",
-  };
-  static propTypes = {
-    country: PropTypes.string,
-    pageSize: PropTypes.number,
-    category: PropTypes.string,
-  };
-  capitalizeLetter(string) {
+const News = (props) => {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
+
+  const capitalizeLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: [],
-      loading: false,
-      page: 1,
-      totalResults:0
-    };
-    document.title = `${this.capitalizeLetter(this.props.category)} - DailyDose`
-  }
+  };
 
-
-  async updateNews() {
-    this.props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-    this.setState({ loading: true });
+  const updateNews = async () => {
+    props.setProgress(10);
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    setLoading(true);
     let data = await fetch(url);
-    this.props.setProgress(30);
+    props.setProgress(30);
     let parsedData = await data.json();
-    this.props.setProgress(70);
+    props.setProgress(70);
     console.log(parsedData);
-    this.setState({
-      articles: this.state.articles.concat(parsedData.articles) ,
-      totalResults: parsedData.totalResults,
-      loading: false,
-    })
-    this.props.setProgress(100);
+    setArticles(parsedData.articles);
+    setTotalResults(parsedData.totalResults);
+    setLoading(false);
 
-
-  }
-
-  async componentDidMount() {
-    this.updateNews();
-  }
-
-  previous = async () => {
-    this.setState({ page: this.state.page - 1 });
-    this.updateNews();
+    props.setProgress(100);
   };
-  next = async () => {
-    this.setState({ page: this.state.page + 1 });
-    this.updateNews();
+  useEffect(() => {
+    document.title = `${capitalizeLetter(props.category)} - DailyDose`;
+    updateNews();
+  }, []);
+
+  const previous = async () => {
+    setPage(page - 1);
+    updateNews();
   };
-  fetchMoreData = async()=>{
-    this.setState({page: this.state.page + 1});
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-    // this.setState({ loading: true });
+  const next = async () => {
+    setPage(page + 1);
+    updateNews();
+  };
+  const fetchMoreData = async () => {
+    const url = `https://newsapi.org/v2/top-headlines?country=${
+      props.country
+    }&category=${props.category}&apiKey=${props.apiKey}&page=${
+      page + 1
+    }&pageSize=${props.pageSize}`;
+    setPage(page + 1);
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
-    this.setState({
-      articles: this.state.articles.concat(parsedData.articles) ,
-      totalResults: parsedData.totalResults,
-    });
-  }
+    setArticles(articles.concat(parsedData.articles));
+    setTotalResults(parsedData.totalResults);
+  };
 
+  return (
+    <>
+      <h1
+        style={{ textAlign: "center", margin: "40px 0px", marginTop: "90px" }}
+      >
+        DailyDose - Top {capitalizeLetter(props.category)} Headlines
+      </h1>
+      {loading && <Spinner />}
 
-
-  render() {
-    return (
-      <>
-     
-        <h1 style={{ textAlign: "center", margin: "40px 0px" }}>
-          DailyDose - Top {this.capitalizeLetter(this.props.category)} Headlines
-        </h1>
-        {this.state.loading && <Spinner />}
-
-        <InfiniteScroll 
-          dataLength={this.state.articles.length}
-          next = {this.fetchMoreData}
-          hasMore = {this.state.articles.length !== this.state.totalResults}
-          loader = {<Spinner/>}
-        >
-         
+      <InfiniteScroll
+        dataLength={articles.length}
+        next={fetchMoreData}
+        hasMore={articles.length !== totalResults}
+        loader={<Spinner />}
+      >
         <div className="container">
-        <div className="row">
-          {!this.state.loading &&
-            this.state.articles.map((element) => {
-              return (
-                <div className="col-md-4" key={element.url}>
-                  <Newsitem
-                    title={element.title ? element.title : ""}
-                    description={
-                      element.description ? element.description : " "
-                    }
-                    imageUrl={element.urlToImage}
-                    newsUrl={element.url}
-                    author={element.author}
-                    date={element.publishedAt}
-                    sources={element.source.name}
+          <div className="row">
+            {!loading &&
+              articles.map((element) => {
+                return (
+                  <div className="col-md-4" key={element.url}>
+                    <Newsitem
+                      title={element.title ? element.title : ""}
+                      description={
+                        element.description ? element.description : " "
+                      }
+                      imageUrl={element.urlToImage}
+                      newsUrl={element.url}
+                      author={element.author}
+                      date={element.publishedAt}
+                      sources={element.source.name}
                     />
-                </div>
-              );
-            })}
+                  </div>
+                );
+              })}
+          </div>
         </div>
-        </div>
-        </InfiniteScroll>
-        
-        {/* <div className="container d-flex justify-content-between">
+      </InfiniteScroll>
+
+      {/* <div className="container d-flex justify-content-between">
           <button
-            disabled={this.state.page <= 1}
+            disabled={state.page <= 1}
             type="button"
             className="btn btn-dark"
-            onClick={this.previous}
+            onClick={previous}
           >
             {" "}
             &larr; Previous
           </button>
           <button
             disabled={
-              this.state.page + 1 >
-              Math.ceil(this.state.totalResults / this.props.pageSize)
+              state.page + 1 >
+              Math.ceil(state.totalResults / props.pageSize)
             }
             type="button"
             className="btn btn-dark"
-            onClick={this.next}
+            onClick={next}
           >
             Next &rarr;
           </button>
         </div> */}
-      
-      </>
-    );
-  }
-}
-
+    </>
+  );
+};
+News.defaultProps = {
+  country: "in",
+  pageSize: 8,
+  category: "general",
+};
+News.propTypes = {
+  country: PropTypes.string,
+  pageSize: PropTypes.number,
+  category: PropTypes.string,
+};
 export default News;
