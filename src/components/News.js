@@ -1,3 +1,4 @@
+// import '../App.js';
 import React, { useEffect, useState } from "react";
 import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
@@ -72,12 +73,13 @@ const News = (props) => {
         hasMore={articles.length !== totalResults}
         loader={<Spinner />}
       >
-        <div className="container">
-          <div className="row">
+        <div className="container" >
+          <div className="row" >
             {!loading &&
               articles.map((element) => {
                 return (
-                  <div className="col-md-4" key={element.url}>
+                  <div className="col-md-4" key={element.url}  style={{color: props.mode === 'dark' ? 'white' : '#042743',
+                  backgroundColor: props.mode === 'dark' ? 'rgb(33 37 41 / 66%)' : 'white'}}>
                     <Newsitem
                       title={element.title ? element.title : ""}
                       description={
@@ -88,6 +90,7 @@ const News = (props) => {
                       author={element.author}
                       date={element.publishedAt}
                       sources={element.source.name}
+                      mode ={props.mode}
                     />
                   </div>
                 );
