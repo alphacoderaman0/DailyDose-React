@@ -61,10 +61,11 @@ const News = (props) => {
   return (
     <>
       <h1
-        style={{ textAlign: "center", margin: "40px 0px", marginTop: "90px" }}
+        style={{ color:'red',textAlign: "center", margin: "40px 0px", marginTop: "90px",fontFamily:'"Times New Roman", Times, serif' }}
       >
-        DailyDose - Top {capitalizeLetter(props.category)} Headlines
+      Top {capitalizeLetter(props.category)} Headlines
       </h1>
+      <p style={{borderBottom:'4px solid red',width:'25%', margin:'auto',borderRadius:'10px', marginTop:'-22px'}}></p>
       {loading && <Spinner />}
 
       <InfiniteScroll

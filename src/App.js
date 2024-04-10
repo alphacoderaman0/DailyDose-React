@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import About from "./components/About";
 import News from "./components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -19,12 +20,12 @@ const App = () => {
       setMode("dark");
       setBtnText("Dark Mode");
       document.body.style.backgroundColor = "#212529";
-      document.body.style.color = "#fff";
+      document.body.style.color = "red";
     } else {
       setMode("light");
       setBtnText("Light Mode");
       document.body.style.backgroundColor = "white";
-      document.body.style.color = "#042743";
+      document.body.style.color = "red";
     }
   };
   // light mode , Dark mode code ends
@@ -47,21 +48,21 @@ const App = () => {
                 pageSize={pageSize}
                 country={"in"}
                 mode= {mode}
-              />
-            }
+                />
+              }
           />
           <Route
             exact
             path="/science"
             element={
               <News
-                apiKey={apiKey}
-                setProgress={setProgress}
-                key="science"
-                pageSize={pageSize}
-                country={"in"}
-                category={"science"}
-                mode= {mode}
+              apiKey={apiKey}
+              setProgress={setProgress}
+              key="science"
+              pageSize={pageSize}
+              country={"in"}
+              category={"science"}
+              mode= {mode}
               />
             }
           />
@@ -70,13 +71,13 @@ const App = () => {
             path="/business"
             element={
               <News
-                apiKey={apiKey}
-                setProgress={setProgress}
-                key="business"
-                pageSize={pageSize}
-                country={"in"}
-                category={"business"}
-                mode= {mode}
+              apiKey={apiKey}
+              setProgress={setProgress}
+              key="business"
+              pageSize={pageSize}
+              country={"in"}
+              category={"business"}
+              mode= {mode}
               />
             }
           />
@@ -85,13 +86,13 @@ const App = () => {
             path="/entertainment"
             element={
               <News
-                apiKey={apiKey}
-                setProgress={setProgress}
-                key="entertainment"
-                pageSize={pageSize}
-                country={"in"}
-                category={"entertainment"}
-                mode= {mode}
+              apiKey={apiKey}
+              setProgress={setProgress}
+              key="entertainment"
+              pageSize={pageSize}
+              country={"in"}
+              category={"entertainment"}
+              mode= {mode}
               />
             }
           />
@@ -100,28 +101,28 @@ const App = () => {
             path="/sports"
             element={
               <News
-                apiKey={apiKey}
-                setProgress={setProgress}
-                key="sports"
-                pageSize={pageSize}
-                country={"in"}
-                category={"sports"}
+              apiKey={apiKey}
+              setProgress={setProgress}
+              key="sports"
+              pageSize={pageSize}
+              country={"in"}
+              category={"sports"}
                 mode= {mode}
-              />
-            }
+                />
+              }
           />
           <Route
             exact
             path="/health"
             element={
               <News
-                apiKey={apiKey}
-                setProgress={setProgress}
-                key="health"
-                pageSize={pageSize}
-                country={"in"}
-                category={"health"}
-                mode= {mode}
+              apiKey={apiKey}
+              setProgress={setProgress}
+              key="health"
+              pageSize={pageSize}
+              country={"in"}
+              category={"health"}
+              mode= {mode}
               />
             }
           />
@@ -130,13 +131,13 @@ const App = () => {
             path="/general"
             element={
               <News
-                apiKey={apiKey}
-                setProgress={setProgress}
-                key="general"
-                pageSize={pageSize}
-                country={"in"}
-                category={"general"}
-                mode= {mode}
+              apiKey={apiKey}
+              setProgress={setProgress}
+              key="general"
+              pageSize={pageSize}
+              country={"in"}
+              category={"general"}
+              mode= {mode}
               />
             }
           />
@@ -145,17 +146,19 @@ const App = () => {
             path="/technology"
             element={
               <News
-                apiKey={apiKey}
-                setProgress={setProgress}
-                key="technology"
-                pageSize={pageSize}
-                country={"in"}
-                category={"technology"}
-                mode= {mode}
+              apiKey={apiKey}
+              setProgress={setProgress}
+              key="technology"
+              pageSize={pageSize}
+              country={"in"}
+              category={"technology"}
+              mode= {mode}
               />
             }
           />
         </Routes>
+            <Footer mode={mode} toggleMode={toggleMode} />
+
       </Router>
     </div>
   );

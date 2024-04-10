@@ -19,7 +19,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #4a9efe;
+    background-color: #ff5959;
     transition: .4s;
     border-radius: 30px;
   }
@@ -104,4 +104,11 @@
   
   .input:checked + .slider:before {
     transform: translateX(30px);
+  }
+
+
+
+
+ .nav-link:hover{
+    color:red;
   }
