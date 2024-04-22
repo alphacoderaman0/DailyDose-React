@@ -5,6 +5,7 @@ import About from "./components/About";
 import News from "./components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
+import Header from "./components/Header";
 
 const App = () => {
   const pageSize = 10;
@@ -13,17 +14,13 @@ const App = () => {
 
   // light mode , Dark mode code Starts
   const [mode, setMode] = useState("light");
-  const [btnText, setBtnText] = useState("Light Mode");
-  
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
-      setBtnText("Dark Mode");
       document.body.style.backgroundColor = "#212529";
       document.body.style.color = "red";
     } else {
       setMode("light");
-      setBtnText("Light Mode");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "red";
     }
@@ -33,8 +30,9 @@ const App = () => {
   return (
     <div>
       <Router>
-        <Navbar mode={mode} toggleMode={toggleMode} />
         <LoadingBar height={"3px"} color="#f11946" progress={progress} />
+        <Header/>
+        <Navbar mode={mode} toggleMode={toggleMode} />
         <Routes>
           <Route path="/about" element={<About mode={mode}/>}/>
           <Route
@@ -157,9 +155,9 @@ const App = () => {
             }
           />
         </Routes>
-            <Footer mode={mode} toggleMode={toggleMode} />
 
       </Router>
+      <Footer mode={mode}/>
     </div>
   );
 };

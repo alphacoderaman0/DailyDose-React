@@ -44,7 +44,7 @@ export default function Footer(props) {
   {/* <!-- Grid container --> */}
 
   {/* <!-- Copyright --> */}
-  <div className="text-center p-2 fs-5" style={{backgroundColor:'rgba(0, 0, 0, 0.2)',color: props.mode === 'dark' ? 'white' : 'black'}}>
+  <div className="text-center p-2 fs-5" style={{backgroundColor:'#ff000012',color: props.mode === 'dark' ? 'white' : 'black'}}>
     © {new Date().getFullYear()} Copyright <a href="/" style={{color:'red', textDecoration:'none'}}>DailyDose</a> inc.
   </div>
   {/* <!-- Copyright --> */}

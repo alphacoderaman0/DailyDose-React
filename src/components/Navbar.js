@@ -8,7 +8,7 @@ const Navbar = (props) => {
       <nav className={`navbar fixed-top navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/" style={{color:'red'}}>
-            <strong>DailyDose</strong>
+            <strong>D<sup>2</sup>ailyDose</strong>
           </Link>
           <button
             className="navbar-toggler"
