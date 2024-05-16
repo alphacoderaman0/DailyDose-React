@@ -1,14 +1,14 @@
 :root {
   --white-color:                  #ffffff;
-  --primary-color:                #E76F51;
-  --secondary-color:              #E9C46A;
+  --primary-color:                #ff0000;
+  --secondary-color:              #ff0000;
   --section-bg-color:             #f0f8ff;
-  --custom-btn-bg-color:          #F4A261;
-  --custom-btn-bg-hover-color:    #E76F51;
+  --custom-btn-bg-color:          #ff0000;
+  --custom-btn-bg-hover-color:    #ff0000;
   --dark-color:                   #000000;
   --p-color:                      #717275;
-  --link-hover-color:             #E76F51;
-
+  --link-hover-color:             #ff0000;
+  --custom-color:                 #ff0000;
   --body-font-family:             'Unbounded', sans-serif;
 
   --h1-font-size:                 42px;
@@ -17,7 +17,7 @@
   --h4-font-size:                 24px;
   --h5-font-size:                 22px;
   --h6-font-size:                 20px;
-  --p-font-size:                  16px;
+  --p-font-size:                  18px;
   --menu-font-size:               12px;
   --btn-font-size:                14px;
   --copyright-font-size:          14px;
@@ -41,7 +41,6 @@ body {
 /*---------------------------------------
   TYPOGRAPHY               
 -----------------------------------------*/
-
 h2,
 h3,
 h4,
@@ -209,7 +208,7 @@ strong {
 
 .blockquote::before {
   content: "“";
-  color: var(--custom-btn-bg-color);
+  color: var(--custom-color);
   font-size: 100px;
   line-height: 1rem;
   display: block;
