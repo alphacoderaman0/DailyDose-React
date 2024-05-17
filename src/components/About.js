@@ -94,7 +94,7 @@ const About = (props) => {
                                 <li> <p>A DailyDose is a News App that is free to use. it Give us Daily News Update. In this you get the news according to the category provided.</p></li>
                                 <li><p>This Project is Made Under the Supervision of <span style={{color:'red'}}>Mr. Avinash Shrivastav</span> and Created by <span style={{color:'red'}}>Aman Mittal</span> and <span style={{color:'red'}}>Love Rathore</span>.</p>
 </li>
-                                <li><p>Credits for Creativity , Color and Designed goes to <span style={{color:'red', fontFamily:'monotype corsiva',fontSize:'24px'}}>Love Rathore</span> (<strong>Designer</strong>)</p></li>
+                                <li><p>Credits for Creativity , Color and Designing goes to <span style={{color:'red', fontFamily:'monotype corsiva',fontSize:'24px'}}>Love Rathore</span> (<strong>Designer</strong>)</p></li>
                                 <li><p>Credits for Development,Implementation and Project Leads goes to <span style={{color:'red', fontFamily:'monotype corsiva',fontSize:'24px'}}>Aman Mittal</span> (<strong>Project Leader, Developer</strong>)</p></li>
                             </ul>
 
