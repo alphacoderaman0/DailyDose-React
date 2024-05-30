@@ -75,7 +75,7 @@ const News = (props) => {
         loader={<Spinner />}
         
       >
-        <div className="container" >
+        <div className="container" style={{marginBottom:'100px'}} >
           <div className="row" >
             {!loading &&
               articles.map((element) => {

@@ -93,19 +93,25 @@ const About = (props) => {
                             <ul>
                                 <li> <p>A DailyDose is a News App that is free to use. it Give us Daily News Update. In this you get the news according to the category provided.</p></li>
                                 <li><p>This Project is Made Under the Supervision of <span style={{color:'red'}}>Mr. Avinash Shrivastav</span> and Created by <span style={{color:'red'}}>Aman Mittal</span> and <span style={{color:'red'}}>Love Rathore</span>.</p>
-</li>
+                                </li>
                                 <li><p>Credits for Creativity , Color and Designing goes to <span style={{color:'red', fontFamily:'monotype corsiva',fontSize:'24px'}}>Love Rathore</span> (<strong>Designer</strong>)</p></li>
                                 <li><p>Credits for Development,Implementation and Project Leads goes to <span style={{color:'red', fontFamily:'monotype corsiva',fontSize:'24px'}}>Aman Mittal</span> (<strong>Project Leader, Developer</strong>)</p></li>
                             </ul>
 
                              <div className="row">
-                                <div className="col-lg-6 col-12 mb-3">
-                                    <img src="/images/ph1.jpg" className="scrollspy-example-item-image img-fluid" alt="Project Leader" title="Project Leader" style={{height:'100%'}}/>
+                                <div className="photo col-lg-6 col-12 mb-3">
+                                    <img src="/images/ph1.jpg" className=" scrollspy-example-item-image img-fluid" alt="Project Leader" title="Project Leader" style={{height:'100%'}}/>
                                 </div>
 
-                                <div className="col-lg-6 col-12 mb-1">
+                                <div className="photo col-lg-6 col-12 mb-1">
                                     <img src="/images/love2.jpg" className="scrollspy-example-item-image img-fluid" alt="Designer" title="Designer" style={{height:'95%'}}/>
                                 </div>
+                            </div>
+
+                            <div className="contact">
+                                <ul>
+                                    <li>For More details you can contact us on 👉👉<a href="https://alphacoderaman.netlify.app" style={{color:'red'}}>Click Me</a>👈👈</li>
+                                </ul>
                             </div>
                         </div>
 {/* About Developers Ended */}
