@@ -61,11 +61,25 @@ const News = (props) => {
   return (
     <>
       <h1
-        style={{ color:'red',textAlign: "center", margin: "40px 0px", marginTop: "90px",fontFamily:'"Times New Roman", Times, serif' }}
+        style={{
+          color: "red",
+          textAlign: "center",
+          margin: "40px 0px",
+          marginTop: "90px",
+          fontFamily: '"Times New Roman", Times, serif',
+        }}
       >
-      Top {capitalizeLetter(props.category)} Headlines
+        Top {capitalizeLetter(props.category)} Headlines
       </h1>
-      <p style={{borderBottom:'4px solid red',width:'25%', margin:'auto',borderRadius:'10px', marginTop:'-22px'}}></p>
+      <p
+        style={{
+          borderBottom: "4px solid red",
+          width: "25%",
+          margin: "auto",
+          borderRadius: "10px",
+          marginTop: "-22px",
+        }}
+      ></p>
       {loading && <Spinner />}
 
       <InfiniteScroll
@@ -73,15 +87,21 @@ const News = (props) => {
         next={fetchMoreData}
         hasMore={articles.length !== totalResults}
         loader={<Spinner />}
-        
       >
-        <div className="container" style={{marginBottom:'100px'}} >
-          <div className="row" >
+        <div className="container" style={{ marginBottom: "100px" }}>
+          <div className="row">
             {!loading &&
               articles.map((element) => {
                 return (
-                  <div className="col-md-4" key={element.url}  style={{color: props.mode === 'dark' ? 'white' : '#042743',
-                  backgroundColor: props.mode === 'dark' ? 'rgb(33 37 41 / 66%)' : 'white'}}>
+                  <div
+                    className="col-md-4"
+                    key={element.url}
+                    style={{
+                      color: props.mode === "dark" ? "white" : "#042743",
+                      backgroundColor:
+                        props.mode === "dark" ? "rgb(33 37 41 / 66%)" : "white",
+                    }}
+                  >
                     <Newsitem
                       title={element.title ? element.title : ""}
                       description={
@@ -92,7 +112,7 @@ const News = (props) => {
                       author={element.author}
                       date={element.publishedAt}
                       sources={element.source.name}
-                      mode ={props.mode}
+                      mode={props.mode}
                     />
                   </div>
                 );
@@ -100,29 +120,6 @@ const News = (props) => {
           </div>
         </div>
       </InfiniteScroll>
-
-      {/* <div className="container d-flex justify-content-between">
-          <button
-            disabled={state.page <= 1}
-            type="button"
-            className="btn btn-dark"
-            onClick={previous}
-          >
-            {" "}
-            &larr; Previous
-          </button>
-          <button
-            disabled={
-              state.page + 1 >
-              Math.ceil(state.totalResults / props.pageSize)
-            }
-            type="button"
-            className="btn btn-dark"
-            onClick={next}
-          >
-            Next &rarr;
-          </button>
-        </div> */}
     </>
   );
 };
